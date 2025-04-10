@@ -1,0 +1,28 @@
+
+@startuml
+left to right direction
+skinparam shadowing true
+skinparam actorStyle "stick"
+skinparam usecase {
+    BorderColor black
+    BackgroundColor white
+    ArrowColor black
+}
+
+actor Usuario
+
+rectangle "gestion de denuncias" {
+    usecase "registrar denuncia" as UC1
+    usecase "agregar complemento" as UC2
+    usecase "modificar fecha de elevacion" as UC3
+    usecase "registrar modificacion" as UC4
+}
+
+Usuario --> UC1
+
+UC1 --> UC2 : <<extend>>
+UC1 --> UC3 : <<extend>>
+
+UC2 --> UC4 : <<include>>
+UC3 --> UC4 : <<include>>
+@enduml
