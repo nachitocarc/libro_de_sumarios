@@ -27,4 +27,4 @@ X.2 Cancelación del usuario:**
 
 ---
 
-- **Postcondición:** La elevación fue agregada con éxito.
+- **Postcondición:** La elevación fue agregada.

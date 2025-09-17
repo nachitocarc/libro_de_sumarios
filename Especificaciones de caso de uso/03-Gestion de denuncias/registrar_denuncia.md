@@ -28,4 +28,4 @@ X.2 Cancelación del usuario:**
 
 ---
 
-- **Postcondición:** La denuncia fue registrada con éxito.
+- **Postcondición:** La denuncia fue registrada.

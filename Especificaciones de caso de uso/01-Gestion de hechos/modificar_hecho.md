@@ -26,4 +26,4 @@ X.2 Cancelación del usuario:**
 
 ---
 
-- **Postcondición:** Hecho modificado exitosamente
+- **Postcondición:** Hecho modificado.

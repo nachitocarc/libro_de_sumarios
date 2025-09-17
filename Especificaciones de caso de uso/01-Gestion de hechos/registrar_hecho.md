@@ -25,4 +25,4 @@ X.2. Cancelación del usuario:**
 
 --- 
 
-- **Postcondición:** Hecho registrado con éxito
+- **Postcondición:** Hecho registrado.

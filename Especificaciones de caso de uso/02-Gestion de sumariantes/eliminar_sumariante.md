@@ -26,4 +26,4 @@ X.2 Cancelación del administrador:**
 
 ---
 
-- **Postcondición:** Sumariante eliminado exitosamente.
+- **Postcondición:** Sumariante eliminado.
