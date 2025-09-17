@@ -2,7 +2,7 @@
 
 - **Actor Principal:** Sumariante  
 - **Descripción:** Permite al sumariante registrar un nuevo hecho.  
-- **Precondiciones:** El usuario debe haber ingresado a la gestión de hechos.  
+- **Precondiciones:** El usuario debe estar autenticado y debe haber ingresado a la gestión de hechos.   
 ---
 
 ## Camino Principal
@@ -11,7 +11,7 @@
 2. El sistema solicita el nombre del hecho.
 3. El usuario ingresa el nombre.
 4. El sistema valida el hecho.
-5. El sistema registra el hecho y le asigna un ID.6. El sistema confirma el registro exitoso.
+5. El sistema registra el hecho y le asigna un ID.
 
 ---
 

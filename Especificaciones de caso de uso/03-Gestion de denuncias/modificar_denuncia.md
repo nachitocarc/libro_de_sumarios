@@ -20,7 +20,7 @@
 ## Caminos Alternativos
 
 X.2 Cancelación del usuario:**  
-  El usuario puede cancelar la acción en cualquier momento. El sistema detiene el proceso y vuelve al estado anterior.
+  El usuario puede cancelar la acción en cualquier momento. El sistema detiene el proceso y vuelve al menú anterior.
 
 4.2 Confirmación denegada:**  
   El usuario niega la confirmación y se cancela el agregado de la elevación.

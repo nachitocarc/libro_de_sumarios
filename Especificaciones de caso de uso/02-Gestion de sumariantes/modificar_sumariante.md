@@ -2,7 +2,7 @@
 
 - **Actor Principal:** Administrador  
 - **Descripción:** Permite al administrador modificar los datos de un sumariante existente.  
-- **Precondiciones:** El usuario deberá ingresar al módulo "Gestionar Sumariante" con credenciales de administrador otorgadas previamente por el desarrollador del software, y el sumariante debe haber sido consultado.  
+- **Precondiciones:** El usuario deberá ingresar al módulo "Gestionar Sumariantes" con credenciales de administrador otorgadas previamente por el desarrollador del software.
 
 ---
 

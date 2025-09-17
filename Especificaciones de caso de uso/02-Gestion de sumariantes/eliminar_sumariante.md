@@ -2,7 +2,7 @@
 
 - **Actor Principal:** Administrador  
 - **Descripción:** Permite al administrador eliminar un sumariante del sistema.  
-- **Precondiciones:** El administrador debe estar autenticado.  
+- **Precondiciones:** El usuario deberá ingresar al módulo "Gestionar Sumariantes" con credenciales de administrador otorgadas previamente por el desarrollador del software.  
 
 ---
 
