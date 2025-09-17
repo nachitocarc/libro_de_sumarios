@@ -25,4 +25,4 @@ X.2 Cancelación del administrador:**
 
 ---
 
-- **Postcondición:** El sistema confirma el registro exitoso.
+- **Postcondición:** Sumariante registrado con éxito.

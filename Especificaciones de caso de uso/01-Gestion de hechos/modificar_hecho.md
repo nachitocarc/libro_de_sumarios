@@ -26,4 +26,4 @@ X.2 Cancelación del usuario:**
 
 ---
 
-- **Postcondición:** El sistema confirma la modificacion exitosa del hecho.
+- **Postcondición:** Hecho modificado exitosamente

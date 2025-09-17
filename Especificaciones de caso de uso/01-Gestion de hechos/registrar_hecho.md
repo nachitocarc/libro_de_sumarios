@@ -25,4 +25,4 @@ X.2. Cancelación del usuario:**
 
 --- 
 
-- **Postcondición:** El sistema confirma el registro exitoso del hecho.
+- **Postcondición:** Hecho registrado con éxito

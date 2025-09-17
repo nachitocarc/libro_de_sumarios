@@ -26,4 +26,4 @@ X.2 Cancelación del administrador:**
 
 ---
 
-- **Postcondición:** El sistema actualiza la base de datos.
+- **Postcondición:** Sumariante eliminado exitosamente.

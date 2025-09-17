@@ -25,4 +25,4 @@ X.2 Cancelación del administrador:**
 
 ---
 
-- **Postcondición:** Datos actualizados.
+- **Postcondición:** Datos del sumariante actualizados.
