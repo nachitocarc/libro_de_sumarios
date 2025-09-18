@@ -1,8 +1,8 @@
 # Caso de Uso: Modificar Hecho
 
-- **Actor Principal:** Sumariante  
-- **Descripción:** Permite al usuario modificar un hecho existente.  
-- **Precondiciones:** El usuario debe estar autenticado y debe haber ingresado a la gestión de hechos. 
+- **Actor Principal:** Sumariante.
+- **Descripción:** Permite al usuario modificar un hecho existente.
+- **Precondiciones:** El usuario debe estar autenticado y debe haber ingresado a la gestión de hechos.
 
 ---
 
