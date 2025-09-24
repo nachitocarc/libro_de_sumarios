@@ -1,6 +1,6 @@
 # Caso de Uso: Modificar Hecho
 
-- **Actor Principal:** Sumariante.
+- **Actor Principal:** Administrador.
 - **Descripción:** Permite al usuario modificar un hecho existente.
 - **Precondiciones:** El usuario debe estar autenticado y debe haber ingresado a la gestión de hechos.
 
@@ -10,9 +10,9 @@
 
 1. El usuario selecciona el hecho.
 2. El usuario clickea el botón “Modificar hecho”.
-3. El sistema solicita los nuevos datos.
+3. el sistema muestra el nombre actual del hecho y pide un nuevo nombre.
 4. El administrador ingresa los nuevos datos.
-5. El sistema valida y actualiza la información.
+5. El sistema  el sistema valida que tenga caracteres, que el nombre no esté repetido y actualiza la información.
 
 ---
 

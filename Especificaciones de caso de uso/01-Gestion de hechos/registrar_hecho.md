@@ -1,6 +1,6 @@
 # Caso de Uso: Registrar Hecho
 
-- **Actor Principal:** Sumariante  
+- **Actor Principal:** Administrador.  
 - **Descripción:** Permite al sumariante registrar un nuevo hecho.  
 - **Precondiciones:** El usuario debe estar autenticado y debe haber ingresado a la gestión de hechos.   
 ---
@@ -10,7 +10,7 @@
 1. El usuario clickea el botón “Registrar hecho”.
 2. El sistema solicita el nombre del hecho.
 3. El usuario ingresa el nombre.
-4. El sistema valida el hecho.
+4. El sistema valida que el hecho contenga caracteres y no este repetido.
 5. El sistema registra el hecho y le asigna un ID.
 
 ---
