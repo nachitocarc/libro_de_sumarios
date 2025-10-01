@@ -9,10 +9,10 @@
 ## Camino Principal
 
 1. El administrador selecciona el sumariante a eliminar.
-2. El administrador clickea “Eliminar sumariante”.
+2. El administrador aprieta “Eliminar sumariante”.
 3. El sistema pide la confirmación de la eliminación.
-4. El usuario clickea en eliminar definitivamente.
-5. El sistema confirma la eliminación.
+4. El usuario aprieta en eliminar definitivamente.
+5. El sistema elimina al sumariante e informa la eliminación.
 
 ---
 
