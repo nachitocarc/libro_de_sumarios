@@ -11,7 +11,7 @@
 2. El sistema solicita el nombre del hecho.
 3. El usuario ingresa el nombre.
 4. El sistema valida que el hecho contenga caracteres y no este repetido.
-5. El sistema registra el hecho y le asigna un ID.
+5. El sistema registra el hecho.
 
 ---
 
