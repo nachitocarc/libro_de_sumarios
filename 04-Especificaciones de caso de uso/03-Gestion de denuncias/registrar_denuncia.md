@@ -11,10 +11,10 @@
 1. El usuario clickea el botón “Nueva denuncia”.
 2. El sistema muestra un formulario con datos a completar.
 3. El usuario rellena el formulario con los datos de la denuncia.
-4. El sistema valida la denuncia.
+4. El sistema valida que los datos de la denuncia sean validos.
 5. El sistema solicita confirmación del registro de la denuncia.
 6. El usuario confirma el registro.
-7. El sistema registra la denuncia y le asigna un ID.
+7. El sistema registra la denuncia, le asigna un ID e informa el registro de la denuncia.
 
 ---
 
