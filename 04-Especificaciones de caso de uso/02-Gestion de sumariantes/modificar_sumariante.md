@@ -11,7 +11,7 @@
 1. El administrador selecciona un sumariante y clickea “Modificar sumariante”.
 2. El sistema muestra los datos del sumariante seleccionado y brinda la posibilidad de modificarlos.
 3. El administrador reemplaza los datos necesarios.
-4. El sistema valida y actualiza los datos actualizados.
+4. El sistema valida que tenga caracteres, que el nombre no esté repetido y actualiza la información.
 
 ---
 
