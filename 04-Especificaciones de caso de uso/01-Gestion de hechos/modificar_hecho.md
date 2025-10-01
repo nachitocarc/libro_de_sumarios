@@ -22,7 +22,7 @@ X.2 Cancelación del usuario:**
   El usuario puede cancelar la acción en cualquier momento. El sistema detiene el proceso y vuelve al menú anterior.
 
 5.1 Error de validación:**  
-  El sistema detecta un problema en los datos y lo envía nuevamente al paso correspondiente (por ejemplo, paso 3).
+  El sistema detecta que no ingreso datos o estan repetidos y lo envía nuevamente al paso 3.
 
 ---
 
