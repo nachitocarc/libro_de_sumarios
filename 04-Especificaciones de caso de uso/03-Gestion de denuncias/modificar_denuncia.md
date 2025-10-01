@@ -11,9 +11,7 @@
 1. El usuario selecciona la denuncia y clickea el botón “Modificar”.
 2. El sistema muestra todos los datos de la denuncia y una sección de elevaciones.
 3. El usuario clickea el botón “Agregar elevación”.
-4. El sistema muestra un mensaje de confirmación.
-5. El usuario acepta la confirmación.
-6. El sistema agrega el número de elevación y la fecha de la misma.
+6. El sistema agrega el número de elevación, la fecha de la misma y muestra un mensaje de confirmación.
 
 ---
 
