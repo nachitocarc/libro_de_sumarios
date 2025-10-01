@@ -10,8 +10,8 @@
 
 1. El administrador clickea el botón “Agregar sumariante”.
 2. El sistema solicita número identificatorio del sumariante, nombre y apellido.
-3. El administrador ingresa los datos.
-4. El sistema valida la información y registra al sumariante.
+3. El administrador ingresa los datos solicitados.
+4. El sistema valida que tenga caracteres, que el nombre no esté repetido y registra al sumariante.
 
 ---
 
