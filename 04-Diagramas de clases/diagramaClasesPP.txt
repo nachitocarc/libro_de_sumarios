@@ -1,0 +1,65 @@
+@startuml
+
+class Usuario {
+    - nombre : String
+    - NI : int
+    - edad : int
+    - Rol : Rol
+    + crearUsuario()
+    + agregarNI()
+    + agregarNombre()
+    + agregarEdad()
+    + agregarRol()
+}
+
+class Rol {
+    - Rol : Administrador/Sumariante
+}
+
+class Denuncia {
+    - numero_denuncia : int
+    - fecha : Date
+    - nombre_victima : String
+    - nombre_imputado : String
+    - lugar_hecho : String
+    - causa : String
+    - detenido : boolean
+    - fiscalia_juzgado : String
+    - observaciones : String
+    - sumariante : Usuario
+    - Hecho : Hecho
+    - Elevacion : Elevacion
+    + crearDenuncia()
+    + agregarFecha()
+    + agregarNombreVictima()
+    + agregarNombreImputado()
+    + agregarLugarHecho()
+    + seleccionarHecho()
+    + seleccionarDetenido()
+    + seleccionarFiscaliaJuzgado()
+    + agregarObservaciones()
+    + agregarElevacion()
+}
+
+class Hecho {
+    - idHecho : int
+    - nombre : String
+    + agregarNombre()
+    + crearHecho()
+}
+
+class Elevacion {
+    - numeroElevacion : int
+    - fechaElevacion : Date
+    - complemento : int
+    + crearElevacion()
+    + agregarFecha()
+    + agregarComplemento()
+}
+
+Usuario "1" -- "1" Rol : tiene un
+Usuario "1" -- "1..*" Denuncia : registra
+Denuncia "1..*" -- "1" Hecho : identifica tipo de
+Denuncia "1" -- "0..*" Elevacion : contiene
+
+@enduml
