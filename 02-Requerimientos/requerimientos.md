@@ -1,6 +1,4 @@
-#  Requerimientos del Sistema
-
-## Requerimientos Generales
+## Requerimientos generales
 
 - Gestión de denuncias  
 - Gestión de hechos  
@@ -8,45 +6,26 @@
 
 ---
 
-##  Requerimientos Específicos
+## Requerimientos específicos
 
-### Gestión de Hechos
+### Gestión de hechos:
 
-- **Registrar hecho** con *ID* y *nombre*  
-- **Modificar hecho**  
-- **Eliminar hecho**  
-- **Listar hecho**  
+- Registrar hecho con id y nombre  
+- Modificar hecho  
+- Eliminar hecho  
 
----
+### Gestión de sumariantes:
 
-### Gestión de Sumariantes
+- Registrar sumariante con nombre, apellido y número identificatorio  
+- Modificar sumariante  
+- Listar sumariantes  
+- Eliminar sumariante  
+- Consultar sumariante  
+- (Cuando el usuario intenta ingresar al menú de gestión de sumariantes, el sistema le solicitará usuario y contraseña de administrador)
 
-- **Registrar sumariante** con nombre, apellido, edad y número identificatorio
-- **Modificar sumariante**  
-- **Listar sumariantes**  
-- **Eliminar sumariante**  
+### Gestión de denuncias: 
 
-
-###  Gestión de Denuncias
-
-- **Registrar denuncia** con los siguientes campos:  
-  - Número de denuncia  
-  - Fecha  
-  - Nombre de la víctima  
-  - Nombre del imputado *(si hubiera)*  
-  - Lugar del hecho  
-  - Causa  
-  - Detenidos *(Sí/No)*  
-  - Fiscalía / Juzgado  
-  - Observaciones  
-  - Número de elevación del sumario al fiscal  
-  - Fecha de elevación  
-  - Complemento *(si se elevara más de una vez)*  
-  - Nombre del sumariante  
-
-- **Agregar complemento**  
-- **Modificar fecha de elevación**  
-- **Registrar modificación** con *fecha y hora*, *nombre* y *apellido del sumariante*  
-
----
-
+- Registrar denuncia con número de denuncia, fecha, nombre de la víctima, nombre del imputado (si hubiera), lugar del hecho, causa, detenidos (sí/no), fiscalía/juzgado, observaciones, número de elevación del sumario al fiscal, la fecha de la elevación, complemento (si se elevara más de una vez) y el nombre del sumariante  
+- Agregar complemento  
+- Modificar fecha de elevación  
+- Registrar modificación con fecha y hora, nombre y apellido del sumariante  

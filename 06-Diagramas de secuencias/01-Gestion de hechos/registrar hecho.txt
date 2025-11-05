@@ -1,0 +1,33 @@
+@startuml
+actor Administrador
+boundary Vista
+control Sistema
+database BaseDeDatos
+
+== Registrar Hecho ==
+
+Administrador -> Vista : Ingresa al módulo "Registrar hecho"
+Vista -> Sistema : Solicita campos de registro
+Sistema --> Vista : Solicita nombre del hecho
+
+Administrador -> Vista : Ingresa nombre del hecho
+Vista -> Sistema : Envía nombre ingresado
+
+alt Hecho válido
+    Sistema -> BaseDeDatos : INSERT nuevo hecho
+    BaseDeDatos --> Sistema : Confirmación de registro
+    Sistema --> Vista : Notificar éxito
+    Vista --> Administrador : "Hecho registrado correctamente"
+else Hecho existente
+    Sistema --> Vista : Mostrar error "Hecho duplicado"
+    Vista --> Administrador : Solicitar nuevo nombre
+end
+
+== Alternativa: Cancelación ==
+Administrador -> Vista : Cancela acción
+Vista -> Sistema : Notificar cancelación
+Sistema --> Vista : Volver al menú de gestión de hechos
+Vista --> Administrador : Lista los hechos
+
+@enduml
+

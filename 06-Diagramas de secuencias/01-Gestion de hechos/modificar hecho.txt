@@ -1,0 +1,34 @@
+@startuml
+actor Administrador
+boundary Vista
+control Sistema
+database BaseDeDatos
+
+== Modificar Hecho ==
+
+Administrador -> Vista : Selecciona hecho
+Vista -> Sistema : Solicita datos del hecho
+Sistema -> BaseDeDatos : Consultar hecho por ID
+BaseDeDatos --> Sistema : Devuelve datos del hecho
+Sistema --> Vista : Muestra datos actuales y solicita nuevos
+
+Administrador -> Vista : Ingresa nuevos datos
+Vista -> Sistema : Envía nuevos datos
+
+alt Datos válidos
+    Sistema -> BaseDeDatos : UPDATE hecho
+    BaseDeDatos --> Sistema : Confirmación de actualización
+    Sistema --> Vista : Notificar éxito
+    Vista --> Administrador : "Hecho modificado correctamente"
+else Error de validación
+    Sistema --> Vista : Mostrar error (nombre vacío o repetido)
+    Vista --> Administrador : Solicitar nuevos datos
+end
+
+== Alternativa: Cancelación ==
+Administrador -> Vista : Cancela acción
+Vista -> Sistema : Notificar cancelación
+Sistema --> Vista : Volver al menú anterior
+Vista --> Administrador : Lista denuevo los hechos
+
+@enduml
