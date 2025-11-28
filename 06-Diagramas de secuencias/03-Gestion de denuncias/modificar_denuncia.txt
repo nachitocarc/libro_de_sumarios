@@ -1,0 +1,38 @@
+@startuml
+actor Usuario
+
+Usuario -> PantallaGestionDenuncia : seleccionarDenuncia()
+Usuario -> PantallaGestionDenuncia : clickModificar()
+
+PantallaGestionDenuncia -> ControladorDenuncia : obtenerDatosDenuncia(id)
+ControladorDenuncia -> Denuncia : buscarPorId(id)
+Denuncia --> ControladorDenuncia : «datos denuncia»
+ControladorDenuncia --> PantallaGestionDenuncia : mostrarDatos(datos)
+
+Usuario -> PantallaGestionDenuncia : clickAgregarElevacion()
+
+PantallaGestionDenuncia -> ControladorDenuncia : agregarElevacion(id)
+
+ControladorDenuncia -> Usuario : solicitarConfirmacion()
+
+alt [Confirmación denegada]
+    Usuario --> ControladorDenuncia : confirmar = false
+    ControladorDenuncia --> PantallaGestionDenuncia : «Acción cancelada»
+    PantallaGestionDenuncia --> Usuario : «Elevación no agregada»
+else [Confirmación aceptada]
+    Usuario --> ControladorDenuncia : confirmar = true
+
+    ControladorDenuncia -> Denuncia : registrarElevacion(id)
+    Denuncia --> ControladorDenuncia : «nueva elevación registrada»
+
+    ControladorDenuncia --> PantallaGestionDenuncia : mostrarConfirmación("Elevación agregada")
+    PantallaGestionDenuncia --> Usuario : «Elevación agregada»
+end
+
+
+== Flujo alternativo: cancelar ==
+
+Usuario -> PantallaGestionDenuncia : clickCancelar()
+PantallaGestionDenuncia --> Usuario : «Volver al menú»
+
+@enduml
