@@ -1,33 +1,50 @@
 @startuml
 actor Administrador
-boundary Vista
-control Sistema
-database BaseDeDatos
 
-== Registrar Hecho ==
+participant "ch: ControladorHecho" as CH
+participant "cdh: <Singleton> CatalogoDeHechos" as CatH
+participant "hecho[i]: Hecho" as H
+participant "hecho: Hecho" as He
 
-Administrador -> Vista : Ingresa al módulo "Registrar hecho"
-Vista -> Sistema : Solicita campos de registro
-Sistema --> Vista : Solicita nombre del hecho
+== Registrar hecho ==
 
-Administrador -> Vista : Ingresa nombre del hecho
-Vista -> Sistema : Envía nombre ingresado
+Administrador -> CH : registrar_hecho(nombre)
+activate CH
 
-alt Hecho válido
-    Sistema -> BaseDeDatos : INSERT nuevo hecho
-    BaseDeDatos --> Sistema : Confirmación de registro
-    Sistema --> Vista : Notificar éxito
-    Vista --> Administrador : "Hecho registrado correctamente"
-else Hecho existente
-    Sistema --> Vista : Mostrar error "Hecho duplicado"
-    Vista --> Administrador : Solicitar nuevo nombre
+CH -> CatH : buscar_hecho(nombre)
+activate CatH
+
+loop para cada hecho en CatalogoDeHechos
+    
+    CatH -> H : getNombre()
+    activate H
+    H --> CatH : <<nombre>>
+        note right of CatH
+            Si nombre = nombre_ingresado
+            hecho = hecho[i]
+            cortar iteración
+        end note
+    deactivate H
+
 end
 
-== Alternativa: Cancelación ==
-Administrador -> Vista : Cancela acción
-Vista -> Sistema : Notificar cancelación
-Sistema --> Vista : Volver al menú de gestión de hechos
-Vista --> Administrador : Lista los hechos
+CatH --> CH : <<hecho:Hecho>>
+deactivate CatH
 
+alt Hecho no encontrado (nombre disponible)
+
+    CH -> He : registrarHecho()
+    activate He
+    He --> CH : <<confirmación registro (boolean)>>
+    deactivate He
+
+    CH --> Administrador : <<registro exitoso>>
+
+else Hecho duplicado / error
+
+    CH --> Administrador : <<mensaje de error>>
+
+end
+
+deactivate CH
 @enduml
-
