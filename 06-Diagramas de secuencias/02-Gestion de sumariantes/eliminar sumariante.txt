@@ -1,0 +1,51 @@
+@startuml
+actor Administrador
+
+participant "cs: ControladorSumariante" as CS
+participant "cds: <Singleton> CatalogoDeSumariantes" as CatS
+participant "sum[i]: Sumariante" as S
+participant "sumariante: Sumariante" as Sum
+
+== Eliminación de Sumariante ==
+
+Administrador -> CS : solicitar_eliminar_sumariante(sumariante_id)
+activate CS
+
+CS -> CatS : buscar_sumariante(sumariante_id)
+activate CatS
+
+loop para cada sumariante en CatalogoDeSumariantes
+    CatS -> S : getId()
+    activate S
+    S --> CatS : <<id : sumariante_id>>
+    note right of CatS
+      Si id = sumariante_id  
+      sumariante = sum[i]  
+      cortar iteración
+    end note
+    deactivate S
+end
+
+CatS --> CS : <<sumariante:Sumariante>>
+deactivate CatS
+
+alt Sumariante encontrado
+    CS -> Administrador : solicitar_confirmacion()
+
+    alt Eliminación confirmada
+        CS -> Sum : eliminar()
+        activate Sum
+        Sum --> CS : <<confirmación eliminación (boolean)>>
+        deactivate Sum
+
+        CS --> Administrador : <<sumariante eliminado>>
+    else Eliminación cancelada
+        CS --> Administrador : <<operación cancelada>>
+    end
+
+else No encontrado / error
+    CS --> Administrador : <<mensaje de error>>
+end
+
+deactivate CS
+@enduml

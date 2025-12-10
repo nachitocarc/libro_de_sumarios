@@ -1,34 +1,67 @@
 @startuml
 actor Administrador
-boundary Vista
-control Sistema
-database BaseDeDatos
 
-== Modificar Hecho ==
+participant "ch: ControladorHecho" as CH
+participant "cdh: <Singleton> CatalogoDeHechos" as CatH
+participant "hecho[i]: Hecho" as H
+participant "hecho: Hecho" as He
 
-Administrador -> Vista : Selecciona hecho
-Vista -> Sistema : Solicita datos del hecho
-Sistema -> BaseDeDatos : Consultar hecho por ID
-BaseDeDatos --> Sistema : Devuelve datos del hecho
-Sistema --> Vista : Muestra datos actuales y solicita nuevos
+== Modificar hecho ==
 
-Administrador -> Vista : Ingresa nuevos datos
-Vista -> Sistema : Envía nuevos datos
+Administrador -> CH : modificar_hecho(id, nuevosDatos)
+activate CH
 
-alt Datos válidos
-    Sistema -> BaseDeDatos : UPDATE hecho
-    BaseDeDatos --> Sistema : Confirmación de actualización
-    Sistema --> Vista : Notificar éxito
-    Vista --> Administrador : "Hecho modificado correctamente"
-else Error de validación
-    Sistema --> Vista : Mostrar error (nombre vacío o repetido)
-    Vista --> Administrador : Solicitar nuevos datos
+CH -> CatH : buscar_hecho_por_id(id)
+activate CatH
+
+CatH -> He : getDatos()
+activate He
+He --> CatH : <<datos actuales>>
+deactivate He
+
+CatH --> CH : <<hecho encontrado>>
+deactivate CatH
+
+CH -> CH : validarDatos(nuevosDatos)
+
+alt Datos inválidos
+    CH --> Administrador : <<error de validación>>
+
+else Datos válidos
+
+    CH -> CatH : verificarNombre(nuevosDatos.nombre)
+    activate CatH
+
+    loop para cada hecho en CatalogoDeHechos
+
+        CatH -> H : getNombre()
+        activate H
+        H --> CatH : <<nombre>>
+            note right of CatH
+                Si nombre = nombre_modificado
+                hecho = hecho[i]
+                cortar iteración
+            end note
+        deactivate H
+
+    end
+
+    CatH --> CH : <<hecho>>
+    deactivate CatH
+
+    alt Nombre disponible
+        CH -> He : actualizar(nuevosDatos)
+        activate He
+        He --> CH : <<confirmación actualización>>
+        deactivate He
+
+        CH --> Administrador : <<hecho modificado>>
+
+    else Nombre repetido / error
+        CH --> Administrador : <<error: nombre existente>>
+    end
+
 end
 
-== Alternativa: Cancelación ==
-Administrador -> Vista : Cancela acción
-Vista -> Sistema : Notificar cancelación
-Sistema --> Vista : Volver al menú anterior
-Vista --> Administrador : Lista denuevo los hechos
-
+deactivate CH
 @enduml

@@ -1,0 +1,50 @@
+@startuml
+actor Usuario
+
+participant "cd: ControladorDenuncia" as CD
+participant "cdd: <Singleton> CatalogoDeDenuncias" as CatD
+participant "denuncia[i]: Denuncia" as D
+participant "denuncia: Denuncia" as Den
+
+== Registrar denuncia ==
+
+Usuario -> CD : registrar_denuncia(datos)
+activate CD
+
+CD -> CatD : validar_unicidad(datos)
+activate CatD
+
+loop para cada denuncia en CatalogoDeDenuncias
+
+    CatD -> D : getDatos()
+    activate D
+    D --> CatD : <<datos>>
+        note right of CatD
+            Si los datos coinciden con una denuncia existente
+            denuncia = denuncia[i]
+            cortar iteración
+        end note
+    deactivate D
+
+end
+
+CatD --> CD : <<denuncia:Denuncia>>
+deactivate CatD
+
+alt Denuncia no existente (datos válidos)
+
+    CD -> Den : registrar(datos)
+    activate Den
+    Den --> CD : <<confirmación registro>>
+    deactivate Den
+
+    CD --> Usuario : <<registro exitoso>>
+
+else Denuncia duplicada / error
+
+    CD --> Usuario : <<mensaje de error>>
+
+end
+
+deactivate CD
+@enduml

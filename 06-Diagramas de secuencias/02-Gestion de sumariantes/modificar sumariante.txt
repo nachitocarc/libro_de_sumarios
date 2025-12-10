@@ -1,0 +1,66 @@
+@startuml
+actor Administrador
+
+participant "cs: ControladorSumariante" as CS
+participant "cds: <Singleton> CatalogoDeSumariantes" as CatS
+participant "sum[i]: Sumariante" as S
+participant "sum: Sumariante" as Sum
+
+== Modificar sumariante ==
+
+Administrador -> CS : modificar_sumariante(id, nuevosDatos)
+activate CS
+
+CS -> CatS : buscarPorId(id)
+activate CatS
+
+CatS -> Sum : getDatos()
+activate Sum
+Sum --> CatS : <<datos actuales>>
+deactivate Sum
+
+CatS --> CS : <<sumariante encontrado>>
+deactivate CatS
+
+CS -> CS : validarDatos(nuevosDatos)
+
+alt Datos inválidos
+    CS --> Administrador : <<error de validación>>
+else Datos válidos
+
+    CS -> CatS : verificarNombre(nuevosDatos.nombre)
+    activate CatS
+
+    loop para cada sumariante en CatS
+        
+        CatS -> S : getNombre()
+        activate S
+        S --> CatS : <<nombre>>
+            note right of CatS
+                Si nombre = nombre_modificado
+                sum = sum[i]
+                cortar iteración
+            end note
+        deactivate S
+
+    end
+
+    CatS --> CS : <<sum: Sumariante>>
+    deactivate CatS
+
+    alt Nombre disponible
+        CS -> Sum : actualizar(nuevosDatos)
+        activate Sum
+        Sum --> CS : <<confirmación>>
+        deactivate Sum
+        
+        CS --> Administrador : <<sumariante modificado>>
+        
+    else Nombre repetido / error
+        CS --> Administrador : <<error: nombre existente>>
+    end
+
+end
+
+deactivate CS
+@enduml

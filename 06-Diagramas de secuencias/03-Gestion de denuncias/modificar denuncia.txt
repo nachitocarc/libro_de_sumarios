@@ -1,0 +1,50 @@
+@startuml
+actor Usuario
+
+participant "cd: ControladorDenuncia" as CD
+participant "cdd: <Singleton> CatalogoDeDenuncias" as CatD
+participant "den[i]: Denuncia" as D
+participant "den: Denuncia" as Den
+
+== Modificar denuncia ==
+
+Usuario -> CD : seleccionar_denuncia(id)
+activate CD
+
+CD -> CatD : buscarPorId(id)
+activate CatD
+
+CatD -> Den : getDatos()
+activate Den
+Den --> CatD : <<datos denuncia>>
+deactivate Den
+
+CatD --> CD : <<denuncia encontrada>>
+deactivate CatD
+
+CD --> Usuario : solicitarConfirmacion()
+
+alt Confirmación denegada
+    Usuario --> CD : <<cancelar>>
+    CD --> Usuario : <<elevación no agregada>>
+
+else Confirmación aceptada
+    Usuario --> CD : <<confirmar>>
+
+    CD -> Den : registrarElevacion()
+    activate Den
+    Den --> CD : <<elevación registrada>>
+    deactivate Den
+
+    CD --> Usuario : <<elevación agregada correctamente>>
+end
+
+deactivate CD
+
+== Alternativa: Cancelación ==
+Usuario -> CD : cancelarAccion()
+activate CD
+CD --> Usuario : <<volver al menú>>
+deactivate CD
+
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+actor Administrador
+
+participant "cs: ControladorSumariante" as CS
+participant "cds: <Singleton> CatalogoDeSumariantes" as CatS
+participant "sum[i]: Sumariante" as S
+participant "sum: Sumariante" as Sum
+
+== Registrar sumariante ==
+
+Administrador -> CS : registrar_sumariante(datos)
+activate CS
+
+CS -> CS : validarDatos(datos)
+
+alt Datos inválidos
+    CS --> Administrador : <<error: datos incompletos o inválidos>>
+
+else Datos válidos
+
+    CS -> CatS : verificarNombre(datos.nombre)
+    activate CatS
+
+    loop para cada sumariante en CatS
+        
+        CatS -> S : getNombre()
+        activate S
+        S --> CatS : <<nombre>>
+            note right of CatS
+                Si nombre = nombre_ingresado  
+                sum = sum[i]  
+                cortar iteración
+            end note
+        deactivate S
+
+    end
+
+    CatS --> CS : <<sum: Sumariante>>
+    deactivate CatS
+
+    alt Nombre disponible
+
+        CS -> Sum : registrar(datos)
+        activate Sum
+        Sum --> CS : <<confirmación registro>>
+        deactivate Sum
+
+        CS --> Administrador : <<sumariante registrado>>
+
+    else Nombre repetido
+        CS --> Administrador : <<error: nombre existente>>
+    end
+
+end
+
+deactivate CS
+
+== Alternativa: Cancelación ==
+
+Administrador -> CS : cancelarRegistro()
+activate CS
+CS --> Administrador : <<volver al menú>>
+deactivate CS
+
+@enduml
