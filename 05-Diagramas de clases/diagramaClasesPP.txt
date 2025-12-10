@@ -4,16 +4,15 @@ class Usuario {
     - nombre : String
     - NI : int
     - edad : int
-    - Rol : Rol
-    + crearUsuario()
-    + agregarNI()
-    + agregarNombre()
-    + agregarEdad()
-    + agregarRol()
+    - rol : Rol
+    + registrarUsuario()
+    + modificarUsuario()
+    + validarDatos()
 }
 
 class Rol {
-    - Rol : Administrador/Sumariante
+    - tipo : Administrador / Sumariante
+    + esAdmin() : boolean
 }
 
 class Denuncia {
@@ -27,39 +26,37 @@ class Denuncia {
     - fiscalia_juzgado : String
     - observaciones : String
     - sumariante : Usuario
-    - Hecho : Hecho
-    - Elevacion : Elevacion
-    + crearDenuncia()
-    + agregarFecha()
-    + agregarNombreVictima()
-    + agregarNombreImputado()
-    + agregarLugarHecho()
-    + seleccionarHecho()
-    + seleccionarDetenido()
-    + seleccionarFiscaliaJuzgado()
-    + agregarObservaciones()
+    - hecho : Hecho
+    - elevacion : Elevacion
+    
+    + registrarDenuncia()
+    + modificarDenuncia()
+    + validarDatos()
     + agregarElevacion()
 }
 
 class Hecho {
     - idHecho : int
     - nombre : String
-    + agregarNombre()
-    + crearHecho()
+    
+    + registrarHecho()
+    + modificarHecho()
+    + validarNombre()
 }
 
 class Elevacion {
     - numeroElevacion : int
     - fechaElevacion : Date
-    - complemento : int
-    + crearElevacion()
-    + agregarFecha()
-    + agregarComplemento()
+    - complemento : String
+    
+    + registrarElevacion()
+    + modificarElevacion()
+    + validarDatos()
 }
 
 Usuario "1" -- "1" Rol : tiene un
 Usuario "1" -- "1..*" Denuncia : registra
-Denuncia "1..*" -- "1" Hecho : identifica tipo de
+Denuncia "1" -- "1" Hecho : identificado por
 Denuncia "1" -- "0..*" Elevacion : contiene
 
 @enduml
