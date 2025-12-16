@@ -13,14 +13,10 @@ actor Usuario
 
 rectangle "gestion de hechos" {
     usecase "registrar hecho" as UC1
-    usecase "consultar hecho" as UC2
-    usecase "modificar hecho" as UC3
-    usecase "eliminar hecho" as UC4
+    usecase "eliminar hecho" as UC2
 }
 
 Usuario --> UC1
 Usuario --> UC2
 
-UC2 --> UC3 : <<extend>>
-UC2 --> UC4 : <<extend>>
 @enduml
