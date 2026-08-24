@@ -14,8 +14,6 @@
 
 ---
 
-![mew](asd.jpg)
-
 ## Introducción
 
 Este software está diseñado para transformar el manejo del libro de sumarios de una comisaría mediante su digitalización. Su implementación permitirá una gestión más ágil y eficiente de los datos, abordando varios problemas actuales.
