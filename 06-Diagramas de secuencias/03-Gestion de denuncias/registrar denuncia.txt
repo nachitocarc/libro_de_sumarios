@@ -11,7 +11,7 @@ participant "denuncia: Denuncia" as Den
 Usuario -> CD : registrar_denuncia(datos)
 activate CD
 
-CD -> CatD : validar_unicidad(datos)
+CD -> CatD : validar_denuncia(datos)
 activate CatD
 
 loop para cada denuncia en CatalogoDeDenuncias
@@ -20,7 +20,7 @@ loop para cada denuncia en CatalogoDeDenuncias
     activate D
     D --> CatD : <<datos>>
         note right of CatD
-            Si los datos coinciden con una denuncia existente
+            Si los datos estan incompletos o no son validos
             denuncia = denuncia[i]
             cortar iteración
         end note
@@ -31,7 +31,7 @@ end
 CatD --> CD : <<denuncia:Denuncia>>
 deactivate CatD
 
-alt Denuncia no existente (datos válidos)
+alt Denuncia no existente (id unico)
 
     CD -> Den : registrar(datos)
     activate Den

@@ -13,14 +13,10 @@ actor Usuario
 
 rectangle "gestion de sumariantes" {
     usecase "registrar sumariantes" as UC1
-    usecase "consultar sumariantes" as UC2
-    usecase "modificar sumariantes" as UC3
     usecase "eliminar sumariantes" as UC4
 }
 
 Usuario --> UC1
-Usuario --> UC2
+Usuario --> UC4
 
-UC2 --> UC3 : <<extend>>
-UC2 --> UC4 : <<extend>>
 @enduml
